@@ -20,20 +20,21 @@ Input	Result
 */
 
 
+
 import java.util.Scanner;
 
 class DLLNode<E>{
-  protected E element;
-  protected DLLNode<E> next, previous;
-  public DLLNode(E element, DLLNode<E> next, DLLNode<E> previous){
-      this.element= element;
-      this.next= next;
-      this.previous= previous;
-  }
-  @Override
+    protected E element;
+    protected DLLNode<E> next, previous;
+    public DLLNode(E element, DLLNode<E> next, DLLNode<E> previous){
+        this.element= element;
+        this.next= next;
+        this.previous= previous;
+    }
+    @Override
     public String toString(){
-      return element.toString();
-  }
+        return element.toString();
+    }
 }
 
 
@@ -41,7 +42,7 @@ class DLL<E> {
     private DLLNode<E> first, last;
 
     public void insertLast(E element) {
-        DLLNode<E> newNode = new DLLNode(element, null, null);
+        DLLNode<E> newNode = new DLLNode<>(element, null, null);
         if (first == null) {
             first = newNode;
             last = newNode;
@@ -53,7 +54,7 @@ class DLL<E> {
     }
 
     public void insertFirst(E element) {
-        DLLNode<E> newNode = new DLLNode(element, first, null);
+        DLLNode<E> newNode = new DLLNode<>(element, first, null);
         if (first != null) {
             first.previous = newNode;
         } else {
@@ -84,30 +85,6 @@ class DLL<E> {
                 System.out.print("<->");
             }
             tmp = tmp.next;
-        }
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        DLL<Integer> List = new DLL();
-        int n,k;
-        n=sc.nextInt();
-
-        for (int i = 0; i < n; i++) {
-            int broj = sc.nextInt();
-            List.insertLast(broj);
-        }
-        k=sc.nextInt();
-        if(k==n){
-            List.printList();
-        }else{
-        for( int i=0;i<k;i++){
-            int x= List.deleteLast();
-            List.insertFirst(x);
-        }
-        List.printList();
         }
     }
 }
